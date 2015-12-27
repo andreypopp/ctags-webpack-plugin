@@ -4,7 +4,6 @@
  */
 
 import fs from 'fs';
-import invariant from 'invariant';
 
 export default class CTagsWebpackPlugin {
 
@@ -35,7 +34,7 @@ export default class CTagsWebpackPlugin {
 }
 
 function formatTag(tag) {
-  var line = [
+  let line = [
     tag.tagname,
     tag.filename,
     tag.loc.start.line,
@@ -52,6 +51,6 @@ function formatTag(tag) {
 }
 
 const TAGS_BANNER = [
-  "!_TAG_FILE_FORMAT	2	/extended format/",
-  "!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/",
+  '!_TAG_FILE_FORMAT	2	/extended format/',
+  '!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/',
 ].join('\n');

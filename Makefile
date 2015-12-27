@@ -6,7 +6,7 @@ TESTS         = $(shell find src -path '*/__tests__/*.js')
 SRC           = $(filter-out $(TESTS), $(shell find src -name '*' -type f))
 LIB           = $(SRC:src/%=lib/%)
 NODE          = $(BIN)/babel-node $(BABEL_OPTIONS)
-MOCHA_OPTIONS = --compilers js:babel/register
+MOCHA_OPTIONS = --compilers js:babel-core/register
 MOCHA					= NODE_ENV=test $(BIN)/mocha $(MOCHA_OPTIONS)
 
 build:

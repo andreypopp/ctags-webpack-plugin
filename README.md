@@ -1,7 +1,7 @@
 ctags-webpack-plugin
 ====================
 
-Webpack plugin to generate accurate ctags:
+[Webpack][] plugin to generate accurate [ctags][]:
 
     var CTagsWebpackPlugin = require('ctags-webpack-plugin');
 
@@ -21,4 +21,9 @@ Webpack plugin to generate accurate ctags:
 
     }
 
-Works best with Vim and CtrlP.
+Works best with [Vim][] and [CtrlP][].
+
+[Webpack]: https://webpack.github.io/
+[ctags]: https://en.wikipedia.org/wiki/Ctags
+[Vim]: http://www.vim.org/
+[CtrlP]: https://github.com/kien/ctrlp.vim

@@ -7,7 +7,7 @@ import fs from 'fs';
 
 export default class CTagsWebpackPlugin {
 
-  constructor(filename) {
+  constructor(filename = 'tags') {
     this.filename = filename;
     this.tags = {};
   }

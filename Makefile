@@ -30,7 +30,7 @@ shrinkwrap:
 version-major version-minor version-patch: test lint
 	@npm version $(@:version-%=%)
 
-publish:
+publish: build
 	@git push --tags origin HEAD:master
 	@npm publish
 

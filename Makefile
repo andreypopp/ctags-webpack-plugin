@@ -40,4 +40,4 @@ clean:
 lib/%: src/%
 	@echo "Building $<"
 	@mkdir -p $(@D)
-	@$(BIN)/babel $(BABEL_OPTIONS) -o $@ $<
+	@$(BIN)/babel --presets es2015 $(BABEL_OPTIONS) -o $@ $<

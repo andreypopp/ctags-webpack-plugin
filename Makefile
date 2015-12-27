@@ -30,8 +30,9 @@ shrinkwrap:
 version-major version-minor version-patch: test lint
 	@npm version $(@:version-%=%)
 
-push:
+publish:
 	@git push --tags origin HEAD:master
+	@npm publish
 
 clean:
 	@rm -rf ./lib ./bin ./example/build/ ./example/tags

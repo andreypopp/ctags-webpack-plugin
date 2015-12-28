@@ -11,7 +11,10 @@ import * as babylon from 'babylon';
 import traverse from 'babel-traverse';
 
 export default function findTags(filename, source) {
-  let ast = babylon.parse(source, {sourceType: 'module'});
+  let ast = babylon.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
   let tags = [];
 
   function collect(tag, node) {

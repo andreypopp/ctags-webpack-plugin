@@ -13,7 +13,7 @@ import traverse from 'babel-traverse';
 export default function findTags(filename, source) {
   let ast = babylon.parse(source, {
     sourceType: 'module',
-    plugins: ['jsx'],
+    plugins: ['jsx', 'flow'],
   });
   let tags = [];
 
@@ -48,8 +48,11 @@ export default function findTags(filename, source) {
       collect({tagname, filename, loc: node.loc, type: 'i'}, node);
     },
     FunctionDeclaration({node}) {
-      let tagname = node.id.name;
-      collect({tagname, filename, loc: node.loc, type: 'f'}, node);
+      // id may be null for flow function declarations
+      if (node.id) {
+          let tagname = node.id.name;
+          collect({tagname, filename, loc: node.loc, type: 'f'}, node);
+      }
     }
   });
 

@@ -1,6 +1,6 @@
 {
   "name": "ctags-webpack-plugin",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Webpack plugin to generate ctags",
   "main": "./lib/index.js",
   "scripts": {

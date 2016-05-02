@@ -42,9 +42,11 @@ export default function findTags(filename, source) {
       } else {
         // for array desctructuring
         let elements = node.id.elements;
-        for (let i = 0; i < elements.length; i++) {
-          let el = elements[i];
-          collect({ tagname: el.name, filename: filename, loc: el.loc, type: 'v' }, node);
+        if (elements && elements.length) {
+          for (let i = 0; i < elements.length; i++) {
+            let el = elements[i];
+            collect({ tagname: el.name, filename: filename, loc: el.loc, type: 'v' }, node);
+          }
         }
       }
     },

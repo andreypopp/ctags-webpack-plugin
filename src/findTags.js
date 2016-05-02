@@ -37,21 +37,33 @@ export default function findTags(filename, source) {
     },
     VariableDeclarator({node}) {
       let tagname = node.id.name;
-      collect({tagname, filename, loc: node.loc, type: 'v'}, node);
+      if (tagname) {
+        collect({ tagname: tagname, filename: filename, loc: node.loc, type: 'v' }, node);
+      } else {
+        // for array desctructuring
+        let elements = node.id.elements;
+        for (let i = 0; i < elements.length; i++) {
+          let el = elements[i];
+          collect({ tagname: el.name, filename: filename, loc: el.loc, type: 'v' }, node);
+        }
+      }
     },
     ImportDefaultSpecifier({node}) {
       let tagname = node.local.name;
       collect({tagname, filename, loc: node.loc, type: 'i'}, node);
     },
     ImportSpecifier({node}) {
-      let tagname = node.id.name;
-      collect({tagname, filename, loc: node.loc, type: 'i'}, node);
+      // id may be null for flow function declarations
+      if (node.id) {
+        let tagname = node.id.name;
+        collect({tagname, filename, loc: node.loc, type: 'i'}, node);
+      }
     },
     FunctionDeclaration({node}) {
       // id may be null for flow function declarations
       if (node.id) {
-          let tagname = node.id.name;
-          collect({tagname, filename, loc: node.loc, type: 'f'}, node);
+        let tagname = node.id.name;
+        collect({tagname, filename, loc: node.loc, type: 'f'}, node);
       }
     }
   });

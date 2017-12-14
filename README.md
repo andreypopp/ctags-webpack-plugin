@@ -3,7 +3,9 @@ ctags-webpack-plugin
 
 [Webpack][] plugin to generate accurate [ctags][]:
 
-    var CTagsWebpackPlugin = require('ctags-webpack-plugin');
+## Webpack 1
+
+    const CTagsWebpackPlugin = require('ctags-webpack-plugin');
 
     module.exports = {
 
@@ -20,6 +22,31 @@ ctags-webpack-plugin
       ]
 
     }
+
+## Webpack 2 and up
+
+    const CTagsWebpackPlugin = require('ctags-webpack-plugin');
+
+    module.exports = {
+
+      ...
+
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            enforce: 'pre',
+            loader: 'ctags-webpack-plugin/loader',
+          },
+        ]
+      },
+
+      plugins: [
+        new CTagsWebpackPlugin('tags')
+      ]
+
+    }
+
 
 Works best with [Vim][] and [CtrlP][].
 
